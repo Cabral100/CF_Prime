@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a2241">
     <title>CF Prime - Assessoria Contábil Empresarial</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
@@ -36,6 +37,7 @@
             color: var(--color-dark);
             -webkit-font-smoothing: antialiased;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -355,9 +357,6 @@
                 font-size: 1.5rem; /* text-2xl */
                 padding: 1rem 0; /* py-4 */
             }
-            .footer-contact-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -421,7 +420,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-gradient min-h-screen flex items-center pt-20">
+    <section id="home" class="hero-gradient min-h-screen flex items-center pt-32 lg:pt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="fade-in hero-content text-center lg:text-left">
@@ -443,7 +442,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="slide-in-right">
+                <div class="slide-in-right hidden lg:block">
                     <img src="https://images.pexels.com/photos/6863183/pexels-photo-6863183.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Contabilidade" class="rounded-2xl shadow-2xl w-full h-auto mt-8 lg:mt-0">
                 </div>
             </div>
@@ -531,7 +530,6 @@
                     </p>
                 </div>
                 <div class="service-card group relative w-full bg-white rounded-2xl p-6 transition-all duration-500 max-md:max-w-md max-md:mx-auto md:w-2/5 md:h-64 xl:p-7 xl:w-1/4 shadow-md scale-in">
-                    
                     <h4 class="text-xl font-semibold mb-3 capitalize">
                         Planejamento Tributário
                     </h4>
@@ -540,7 +538,6 @@
                     </p>
                 </div>
                 <div class="service-card group relative w-full bg-white rounded-2xl p-6 transition-all duration-500 max-md:max-w-md max-md:mx-auto md:w-2/5 md:h-64 xl:p-7 xl:w-1/4 shadow-md scale-in">
-                    
                     <h4 class="text-xl font-semibold mb-3 capitalize">
                         Consultoria Empresarial
                     </h4>
@@ -549,7 +546,6 @@
                     </p>
                 </div>
                 <div class="service-card group relative w-full bg-white rounded-2xl p-6 transition-all duration-500 max-md:max-w-md max-md:mx-auto md:w-2/5 md:h-64 xl:p-7 xl:w-1/4 shadow-md scale-in">
-                    
                     <h4 class="text-xl font-semibold mb-3 capitalize">
                         Abertura de Empresas
                     </h4>
@@ -854,13 +850,13 @@
                                         </svg>
                                         <h5 class="text-base font-normal leading-6 ml-5">carina@cfprime.com.br</h5>
                                     </a>
-                                    <a href="#" class="flex items-center">
+                                    <div class="flex items-center">
                                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M25 12.9169C25 17.716 21.1939 21.5832 18.2779 24.9828C16.8385 26.6609 16.1188 27.5 15 27.5C13.8812 27.5 13.1615 26.6609 11.7221 24.9828C8.80612 21.5832 5 17.716 5 12.9169C5 10.1542 6.05357 7.5046 7.92893 5.55105C9.8043 3.59749 12.3478 2.5 15 2.5C17.6522 2.5 20.1957 3.59749 22.0711 5.55105C23.9464 7.5046 25 10.1542 25 12.9169Z" stroke="currentColor" stroke-width="2"/>
                                             <path d="M17.5 11.6148C17.5 13.0531 16.3807 14.219 15 14.219C13.6193 14.219 12.5 13.0531 12.5 11.6148C12.5 10.1765 13.6193 9.01058 15 9.01058C16.3807 9.01058 17.5 10.1765 17.5 11.6148Z" stroke="currentColor" stroke-width="2"/>
                                         </svg>
                                         <h5 class="text-base font-normal leading-6 ml-5">Rua das Empresas, 123 - Centro, São Paulo - SP</h5>
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -897,13 +893,14 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary text-secondary py-16">
+    <footer class="bg-primary text-secondary py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <hr class="border-t border-secondary/20 mb-12">
             <div class="flex justify-center mb-6">
                 <img src="img/logo_cfprime.png" alt="CF Prime Logo" class="h-16 w-auto">
             </div>
         
-            <div class="max-w-5xl mx-auto grid footer-contact-grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left mb-12">
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left mb-12">
                 <a href="https://wa.me/5511973643939" target="_blank" class="flex items-center gap-4 p-4 rounded-lg hover:bg-dark/50 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.433-9.89-9.889-9.89-5.452 0-9.887 4.434-9.889 9.891.001 2.23.652 4.395 1.849 6.265l.244.399-1.125 4.105 4.216-1.105.387.232z" /></svg>
                     <span class="text-base"><strong class="block font-semibold">WhatsApp</strong>(11) 973643939</span>
@@ -929,8 +926,7 @@
     </footer>
 
     <!-- Floating Buttons -->
-    <a href="https://wa.me/5511974132034?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Piso%20Fulget."
-       class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp">
+    <a href="https://wa.me/5511973643939?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20CF%20Prime." class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp">
         <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
     
