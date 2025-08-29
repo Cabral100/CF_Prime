@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -38,6 +37,8 @@
             -webkit-font-smoothing: antialiased;
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
+            position: relative;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -143,10 +144,6 @@
             bottom: 2px !important;
         }
 
-        .swiper-pagination-bullet-active {
-            background: var(--color-primary) !important;
-        }
-        
         .steps-swiper .swiper-wrapper {
             height: fit-content !important;
             width: 100% !important;
@@ -161,8 +158,8 @@
         }
         
         .steps-swiper .swiper-pagination-bullet {
-            width: 42px;
-            height: 42px;
+            width: 48px;
+            height: 48px;
             text-align: center;
             display: flex;
             align-items: center;
@@ -173,6 +170,7 @@
             opacity: 1;
             background: #F9FAFB;
             border: 1px solid #E5E7EB;
+            padding: 10px;
         }
         
         .steps-swiper .swiper-pagination-bullet-active {
@@ -337,6 +335,67 @@
         #mobile-menu.menu-visible #mobile-menu-nav-items > *:nth-child(7) { transition-delay: 0.7s; } /* FAQ */
         #mobile-menu.menu-visible #mobile-menu-nav-items > *:nth-child(8) { transition-delay: 0.8s; } /* Contato */
 
+        /* Testimonial navigation buttons */
+        .testimonial-navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+        
+        .testimonial-button {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-button:hover {
+            background-color: var(--color-accent);
+            color: var(--color-secondary);
+        }
+        
+        /* FAQ Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .accordion.active .accordion-content {
+            max-height: 500px;
+        }
+        
+        /* Footer improvements */
+        .footer-icon {
+            font-size: 1.5rem;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-contact-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
         /* Responsividade */
         @media (max-width: 768px) {
             .section-padding {
@@ -349,13 +408,52 @@
                 justify-content: center;
             }
             .steps-swiper .swiper-pagination-bullet {
-                width: 38px;
-                height: 38px;
+                width: 44px;
+                height: 44px;
                 font-size: 14px;
+                padding: 8px;
             }
             .mobile-menu-link {
                 font-size: 1.5rem; /* text-2xl */
                 padding: 1rem 0; /* py-4 */
+            }
+            
+            /* Prevent horizontal scrolling on mobile */
+            html, body {
+                overflow-x: hidden;
+                width: 100%;
+                position: relative;
+            }
+            
+            .footer-contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .testimonial-navigation {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                transform: translateY(-50%);
+                justify-content: space-between;
+                pointer-events: none;
+                z-index: 10;
+            }
+            
+            .testimonial-button {
+                pointer-events: all;
+                position: relative;
+            }
+            
+            .testimonial-button-prev {
+                left: -20px;
+            }
+            
+            .testimonial-button-next {
+                right: -20px;
             }
         }
     </style>
@@ -542,7 +640,7 @@
                         Consultoria Empresarial
                     </h4>
                     <p class="text-sm font-normal text-gray-600 leading-5">
-                        Orientação especializada para tomada de decisões estratégicas e crescimento sustentável do negócio
+                        Orientação especializada para tomada de decisões estratégicas và crescimento sustentável do negócio
                     </p>
                 </div>
                 <div class="service-card group relative w-full bg-white rounded-2xl p-6 transition-all duration-500 max-md:max-w-md max-md:mx-auto md:w-2/5 md:h-64 xl:p-7 xl:w-1/4 shadow-md scale-in">
@@ -646,12 +744,23 @@
     </div>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="section-padding bg-primary">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" class="section-padding bg-primary relative">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
             <div class="mb-16 fade-in">
                 <span class="text-sm text-accent font-medium text-center block mb-2 tracking-wider uppercase">Depoimentos</span>
                 <h2 class="section-title text-3xl md:text-4xl text-center font-bold text-secondary">O que nossos clientes dizem!</h2>
             </div>
+            
+            <!-- Navigation buttons for desktop -->
+            <div class="testimonial-navigation hidden lg:flex">
+                <div class="testimonial-button testimonial-button-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="testimonial-button testimonial-button-next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
             <div class="swiper testimonialSwiper">
                 <div class="swiper-wrapper w-max">
                     <div class="swiper-slide">
@@ -711,7 +820,7 @@
                                 </div>
                                 <p class="text-base text-gray-600 leading-6 transition-all duration-500 pb-8 group-hover:text-gray-800">
                                     Parceria de longa data com a CF Prime. Sempre nos orientam da melhor forma e mantêm 
-                                    nossa empresa em total conformidade com as obrigações fiscais.
+                                    nossa empresa in total conformidade com as obrigações fiscais.
                                 </p>
                             </div>
                             <div class="flex items-center gap-5 border-t border-solid border-gray-200 pt-5">
@@ -754,14 +863,14 @@
                             </h2>
                         </div>
                         <div class="accordion-group" data-accordion="default-accordion">
-                            <div class="accordion pb-8 border-b border-solid border-gray-200 active" id="basic-heading-one">
+                            <div class="accordion pb-8 border-b border-solid border-gray-200" id="basic-heading-one">
                                 <button class="accordion-toggle group inline-flex items-center justify-between text-xl font-normal leading-8 text-gray-600 w-full transition duration-500 hover:text-primary accordion-active:text-primary accordion-active:font-medium always-open" aria-controls="basic-collapse-one">
                                     <h5>Quais serviços vocês oferecem?</h5>
                                     <svg class="text-gray-900 transition duration-500 group-hover:text-primary accordion-active:text-primary accordion-active:rotate-180" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
                                     </svg>
                                 </button>
-                                <div id="basic-collapse-one" class="accordion-content w-full px-0 overflow-hidden pr-4 active" style="max-height: 120px;" aria-labelledby="basic-heading-one">
+                                <div id="basic-collapse-one" class="accordion-content w-full px-0 overflow-hidden pr-4" aria-labelledby="basic-heading-one">
                                     <p class="text-base font-normal text-gray-600">
                                         Oferecemos contabilidade fiscal, planejamento tributário, consultoria empresarial, 
                                         abertura de empresas, folha de pagamento, e muito mais. Nossa equipe está preparada 
@@ -901,21 +1010,41 @@
             </div>
         
             <div class="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left mb-12">
-                <a href="https://wa.me/5511973643939" target="_blank" class="flex items-center gap-4 p-4 rounded-lg hover:bg-dark/50 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.433-9.89-9.889-9.89-5.452 0-9.887 4.434-9.889 9.891.001 2.23.652 4.395 1.849 6.265l.244.399-1.125 4.105 4.216-1.105.387.232z" /></svg>
-                    <span class="text-base"><strong class="block font-semibold">WhatsApp</strong>(11) 973643939</span>
+                <a href="https://wa.me/5511973643939" target="_blank" class="footer-contact-item">
+                    <div class="footer-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <strong class="block font-semibold">WhatsApp</strong>
+                        <span>(11) 973643939</span>
+                    </div>
                 </a>
-                <a href="tel:+5511973643939" class="flex items-center gap-4 p-4 rounded-lg hover:bg-dark/50 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                    <span class="text-base"><strong class="block font-semibold">Telefone</strong>(11) 973643939</span>
+                <a href="tel:+5511973643939" class="footer-contact-item">
+                    <div class="footer-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <strong class="block font-semibold">Telefone</strong>
+                        <span>(11) 973643939</span>
+                    </div>
                 </a>
-                <a href="mailto:carina@cfprime.com.br" class="flex items-center gap-4 p-4 rounded-lg hover:bg-dark/50 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                    <span class="text-base"><strong class="block font-semibold">Email</strong>carina@cfprime.com.br</span>
+                <a href="mailto:carina@cfprime.com.br" class="footer-contact-item">
+                    <div class="footer-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <strong class="block font-semibold">Email</strong>
+                        <span>carina@cfprime.com.br</span>
+                    </div>
                 </a>
-                <div class="flex items-center gap-4 p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                    <span class="text-base"><strong class="block font-semibold">Endereço</strong>Rua das Empresas, 123<br>Centro, São Paulo - SP</span>
+                <div class="footer-contact-item">
+                    <div class="footer-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <strong class="block font-semibold">Endereço</strong>
+                        <span>Rua das Empresas, 123<br>Centro, São Paulo - SP</span>
+                    </div>
                 </div>
             </div>
     
@@ -1000,7 +1129,7 @@
         });
 
 
-        // Animation on scroll
+        // Animation on scroll - only when element is in viewport
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1027,8 +1156,12 @@
             centeredSlides: true,
             grabCursor: true,
             pagination: {
-                el: ".swiper-pagination",
+                el: ".testimonialSwiper .swiper-pagination",
                 clickable: true,
+            },
+            navigation: {
+                nextEl: ".testimonial-button-next",
+                prevEl: ".testimonial-button-prev",
             },
             autoplay: {
                 delay: 3000,
@@ -1058,7 +1191,7 @@
             centeredSlides: true,
             grabCursor: true,
             pagination: {
-                el: ".swiper-pagination",
+                el: ".steps-swiper .swiper-pagination",
                 clickable: true,
                 renderBullet: function (index, className) {
                     return '<span class="' + className + '">' + (index + 1) + "</span>";
@@ -1081,22 +1214,17 @@
                 document.querySelectorAll('.accordion').forEach(acc => {
                     if (acc !== accordion) {
                         acc.classList.remove('active');
-                        acc.querySelector('.accordion-content').style.maxHeight = '0px';
                     }
                 });
         
                 // Toggle current accordion
                 if (isActive) {
                     accordion.classList.remove('active');
-                    content.style.maxHeight = '0px';
                 } else {
                     accordion.classList.add('active');
-                    content.style.maxHeight = content.scrollHeight + 'px';
                 }
             });
         });
-
-
 
         // Contact form
         document.getElementById('contact-form').addEventListener('submit', function(e) {
@@ -1117,7 +1245,7 @@
             this.reset();
         });
 
-        // Initialize first FAQ as open
+        // Initialize first FAQ as closed by default
         document.addEventListener('DOMContentLoaded', function() {
             // Loader logic
             const loader = document.getElementById('loader');
@@ -1133,12 +1261,10 @@
                 }, 3000); // 3 seconds
             }
 
-            // Accordion logic
-            const firstAccordion = document.querySelector('.accordion.active');
-            if (firstAccordion) {
-                const content = firstAccordion.querySelector('.accordion-content');
-                content.style.maxHeight = content.scrollHeight + 'px';
-            }
+            // Close all accordions by default
+            document.querySelectorAll('.accordion').forEach(accordion => {
+                accordion.classList.remove('active');
+            });
         });
     </script>
 </body>
